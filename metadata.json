@@ -1,0 +1,11 @@
+{
+  "name": "iszak-account",
+  "version": "0.0.1",
+  "author": "Iszak Bryan",
+  "summary": "A module for managing accounts",
+  "license": "Apache 2.0",
+  "source": "https://github.com/iszak/puppet-account.git",
+  "project_page": "https://github.com/iszak/puppet-account",
+  "issues_url": "https://github.com/iszak/puppet-account/issues",
+  "dependencies": []
+}
