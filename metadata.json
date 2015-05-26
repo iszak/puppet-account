@@ -7,5 +7,8 @@
   "source": "https://github.com/iszak/puppet-account.git",
   "project_page": "https://github.com/iszak/puppet-account",
   "issues_url": "https://github.com/iszak/puppet-account/issues",
-  "dependencies": []
+  "dependencies": [
+    {"name":"puppetlabs/git","version_requirement":">= 0.3.0 < 1.0.0"},
+    {"name":"puppetlabs/vcsrepo","version_requirement":">= 1.3.0 < 2.0.0"}
+  ]
 }
