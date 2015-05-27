@@ -2,9 +2,14 @@ define account (
     $email = undef,
     $name  = undef,
     $user  = undef,
+
     $dotfiles = true,
-    $ssh_key = undef,
+
+    $ssh_key      = undef,
     $ssh_key_type = undef,
+
+    $postgresql          = true,
+    $postgresql_password = true
 ) {
     include git
 
@@ -41,6 +46,17 @@ define account (
             user   => $user,
             type   => $ssh_key_type,
             key    => $ssh_key
+        }
+    }
+
+
+    if ($postgresql == true) {
+        postgresql::server::role { $user:
+            password_hash => postgresql_password($user, $postgresql_password),
+            superuser     => true,
+            createdb      => true,
+            createrole    => true,
+            replication   => true,
         }
     }
 }
