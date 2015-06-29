@@ -36,6 +36,9 @@ define account (
             require  => User[$user],
             provider => git,
             source   => "https://github.com/${user}/dotfiles.git",
+            user     => $user,
+            owner    => $user,
+            group    => $user,
         }
     }
 
