@@ -9,9 +9,11 @@ define account (
     $ssh_key_type = undef,
 
     $postgresql          = true,
-    $postgresql_password = true
+    $postgresql_password = true,
+
+    $packages            = []
 ) {
-    include git
+    include ::git
 
     user { $user:
       ensure     => present,
@@ -40,7 +42,7 @@ define account (
             owner    => $user,
             group    => $user,
         }
-        
+
         exec { "/bin/ln --symbolic /home/${user}/.dotfiles":
             command => "/bin/ln --symbolic /home/${user}/.dotfiles/.* /home/${user}/",
             user    => $user,
@@ -61,12 +63,21 @@ define account (
 
 
     if ($postgresql == true) {
+        include ::postgresql::server
+
         postgresql::server::role { $user:
+            require       => Class['postgresql::server'],
             password_hash => postgresql_password($user, $postgresql_password),
             superuser     => true,
             createdb      => true,
             createrole    => true,
             replication   => true,
+        }
+    }
+
+    if ($packages != []) {
+        package { $packages:
+            ensure => latest
         }
     }
 }
