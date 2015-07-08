@@ -43,12 +43,12 @@ define account (
             group    => $user,
         }
 
-        exec { "/bin/ln --symbolic /home/${user}/.dotfiles":
-            command => "/bin/ln --symbolic /home/${user}/.dotfiles/.* /home/${user}/",
-            user    => $user,
-            group   => $user,
-            require => Vcsrepo["/home/${user}/.dotfiles"]
-        }
+        #exec { "/bin/ln --symbolic /home/${user}/.dotfiles":
+        #    command => "/bin/ln --symbolic /home/${user}/.dotfiles/.* /home/${user}/",
+        #    user    => $user,
+        #    group   => $user,
+        #    require => Vcsrepo["/home/${user}/.dotfiles"]
+        #}
     }
 
     if ($ssh_key != undef and $ssh_key_type != undef) {
