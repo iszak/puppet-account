@@ -1,17 +1,19 @@
 define account (
-    $email = undef,
-    $name  = undef,
-    $user  = undef,
+    $user,
 
-    $dotfiles = true,
+    $git_email,
+    $git_name,
 
-    $ssh_key      = undef,
-    $ssh_key_type = undef,
+    $dotfiles            = true,
 
-    $postgresql          = true,
-    $postgresql_password = true,
+    $ssh_key             = undef,
+    $ssh_key_type        = undef,
 
-    $packages            = []
+    $postgresql          = false,
+    $postgresql_user,
+    $postgresql_password,
+
+    $packages            = undef
 ) {
     include ::git
 
@@ -22,13 +24,13 @@ define account (
 
     git::config { 'user.name':
       require => User[$user],
-      value   => $name,
+      value   => $git_name,
       user    => $user,
     }
 
     git::config { 'user.email':
       require => User[$user],
-      value   => $email,
+      value   => $git_email,
       user    => $user,
     }
 
@@ -65,9 +67,9 @@ define account (
     if ($postgresql == true) {
         include ::postgresql::server
 
-        postgresql::server::role { $user:
+        postgresql::server::role { $postgresql_user:
             require       => Class['postgresql::server'],
-            password_hash => postgresql_password($user, $postgresql_password),
+            password_hash => postgresql_password($postgresql_user, $postgresql_password),
             superuser     => true,
             createdb      => true,
             createrole    => true,
@@ -75,7 +77,7 @@ define account (
         }
     }
 
-    if ($packages != []) {
+    if ($packages != undef) {
         package { $packages:
             ensure => latest
         }
