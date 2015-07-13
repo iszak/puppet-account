@@ -6,16 +6,31 @@ define account (
 
     $dotfiles            = true,
 
-    $ssh_key             = undef,
-    $ssh_key_type        = undef,
+    $ssh_key             = '',
+    $ssh_key_type        = '',
 
     $postgresql          = false,
-    $postgresql_user,
-    $postgresql_password,
+    $postgresql_user     = '',
+    $postgresql_password = '',
 
-    $packages            = undef
+    $packages            = []
 ) {
     include ::git
+
+    validate_string($user)
+    validate_string($git_email)
+    validate_string($git_name)
+
+    validate_bool($dotfiles)
+
+    validate_string($ssh_key)
+    validate_string($ssh_key_type)
+
+    validate_bool($postgresql)
+    validate_string($postgresql_user)
+    validate_string($postgresql_password)
+
+    validate_array($packages)
 
     user { $user:
       ensure     => present,
@@ -53,7 +68,7 @@ define account (
         #}
     }
 
-    if ($ssh_key != undef and $ssh_key_type != undef) {
+    if ($ssh_key != '' and $ssh_key_type != '') {
         ssh_authorized_key { $user:
             ensure => present,
             name   => $user,
@@ -77,9 +92,7 @@ define account (
         }
     }
 
-    if ($packages != undef) {
-        package { $packages:
-            ensure => latest
-        }
+    if ($packages != []) {
+        ensure_packages($packages, {ensure => latest})
     }
 }
