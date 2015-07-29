@@ -1,17 +1,19 @@
 define account (
     $user,
+    $groups = ['sudo'],
+    $shell = '/bin/bash',
 
     $git_email,
     $git_name,
 
     $dotfiles            = true,
 
-    $ssh_key             = '',
-    $ssh_key_type        = '',
+    $ssh_key,
+    $ssh_key_type,
 
     $postgresql          = false,
-    $postgresql_user     = '',
-    $postgresql_password = '',
+    $postgresql_user     = undef,
+    $postgresql_password = undef,
 
     $packages            = []
 ) {
@@ -34,7 +36,10 @@ define account (
 
     user { $user:
       ensure     => present,
-      managehome => true
+      name       => $name,
+      groups     => $groups,
+      shell      => $shell,
+      managehome => true,
     }
 
     git::config { 'user.name':
@@ -68,19 +73,21 @@ define account (
         #}
     }
 
-    if ($ssh_key != '' and $ssh_key_type != '') {
-        ssh_authorized_key { $user:
-            ensure => present,
-            name   => $user,
-            user   => $user,
-            type   => $ssh_key_type,
-            key    => $ssh_key
-        }
+    ssh_authorized_key { $user:
+        ensure => present,
+        name   => $user,
+        user   => $user,
+        type   => $ssh_key_type,
+        key    => $ssh_key
     }
 
 
     if ($postgresql == true) {
         include ::postgresql::server
+
+        if ($postgresql_user == undef or $postgresql_password == undef) {
+            fail('PostgreSQL username and password is unset')
+        }
 
         postgresql::server::role { $postgresql_user:
             require       => Class['postgresql::server'],
