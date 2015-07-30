@@ -11,6 +11,8 @@ define account (
     $ssh_key,
     $ssh_key_type,
 
+    $password,
+
     $postgresql          = false,
     $postgresql_user     = undef,
     $postgresql_password = undef,
@@ -38,6 +40,7 @@ define account (
       ensure     => present,
       name       => $name,
       groups     => $groups,
+      password   => $password,
       shell      => $shell,
       managehome => true,
     }
