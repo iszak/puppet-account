@@ -5,13 +5,13 @@ define account (
 
     $git_email,
     $git_name,
+    $git_user,
 
     $dotfiles            = true,
 
-    $ssh_key,
-    $ssh_key_type,
+    $ssh_authorized_keys = {},
 
-    $password,
+    $password            = undef,
 
     $postgresql          = false,
     $postgresql_user     = undef,
@@ -27,14 +27,17 @@ define account (
 
     validate_bool($dotfiles)
 
-    validate_string($ssh_key)
-    validate_string($ssh_key_type)
+    validate_hash($ssh_authorized_keys)
 
     validate_bool($postgresql)
     validate_string($postgresql_user)
     validate_string($postgresql_password)
 
     validate_array($packages)
+
+    if ($ssh_authorized_keys == {} and $password == undef) {
+      fail('Either a SSH key or password must be set')
+    }
 
     user { $user:
       ensure     => present,
@@ -62,7 +65,7 @@ define account (
             ensure   => present,
             require  => User[$user],
             provider => git,
-            source   => "https://github.com/${user}/dotfiles.git",
+            source   => "https://github.com/${git_user}/dotfiles.git",
             user     => $user,
             owner    => $user,
             group    => $user,
@@ -76,12 +79,16 @@ define account (
         #}
     }
 
-    ssh_authorized_key { $user:
-        ensure => present,
-        name   => $user,
-        user   => $user,
-        type   => $ssh_key_type,
-        key    => $ssh_key
+    if ($ssh_authorized_keys != {}) {
+      create_resources(
+        ssh_authorized_keys,
+        $ssh_authorized_keys,
+        {
+          ensure => present,
+          name   => $user,
+          user   => $user,
+        }
+      )
     }
 
 
