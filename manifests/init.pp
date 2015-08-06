@@ -81,7 +81,7 @@ define account (
 
     if ($ssh_authorized_keys != {}) {
       create_resources(
-        ssh_authorized_keys,
+        ssh_authorized_key,
         $ssh_authorized_keys,
         {
           ensure => present,
