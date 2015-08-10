@@ -1,11 +1,11 @@
 define account (
-    $user,
-    $groups = ['sudo'],
-    $shell = '/bin/bash',
-
     $git_email,
     $git_name,
     $git_user,
+
+    $user,
+    $groups = ['sudo'],
+    $shell = '/bin/bash',
 
     $dotfiles            = true,
 
