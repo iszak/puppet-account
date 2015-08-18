@@ -48,14 +48,16 @@ define account (
       managehome => true,
     }
 
-    git::config { 'user.name':
+    git::config { "${user} user.name":
       require => User[$user],
+      key     => 'user.name',
       value   => $git_name,
       user    => $user,
     }
 
-    git::config { 'user.email':
+    git::config { "${user} user.email":
       require => User[$user],
+      key     => 'user.email',
       value   => $git_email,
       user    => $user,
     }
