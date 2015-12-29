@@ -22,11 +22,11 @@ GEM
       activesupport (>= 3.0.0)
       faraday (~> 0.8)
       multi_json (~> 1.7)
-    hiera (3.0.1)
+    hiera (3.0.5)
       json_pure
     i18n (0.7.0)
     json (1.8.3)
-    json_pure (1.8.2)
+    json_pure (1.8.3)
     librarian-puppet (2.2.1)
       librarianp (>= 0.6.3)
       puppet_forge (~> 1.0)
@@ -34,7 +34,7 @@ GEM
     librarianp (0.6.3)
       thor (~> 0.15)
     metaclass (0.0.4)
-    metadata-json-lint (0.0.6)
+    metadata-json-lint (0.0.11)
       json
       spdx-licenses (~> 1.0)
     minitest (5.8.0)
@@ -42,7 +42,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    puppet (4.2.1)
+    puppet (4.3.1)
       facter (> 2.0, < 4)
       hiera (>= 2.0, < 4)
       json_pure
@@ -51,28 +51,28 @@ GEM
       rake
     puppet_forge (1.0.5)
       her (~> 0.6.8)
-    puppetlabs_spec_helper (0.10.3)
+    puppetlabs_spec_helper (1.0.1)
       mocha
       puppet-lint
       puppet-syntax
       rake
       rspec-puppet
     rake (10.4.2)
-    rspec (3.3.0)
-      rspec-core (~> 3.3.0)
-      rspec-expectations (~> 3.3.0)
-      rspec-mocks (~> 3.3.0)
-    rspec-core (3.3.2)
-      rspec-support (~> 3.3.0)
-    rspec-expectations (3.3.1)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.1)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-mocks (3.3.2)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-puppet (2.2.0)
+      rspec-support (~> 3.4.0)
+    rspec-puppet (2.3.0)
       rspec
-    rspec-support (3.3.0)
+    rspec-support (3.4.1)
     rsync (1.0.9)
     spdx-licenses (1.0.0)
       json
@@ -86,13 +86,13 @@ PLATFORMS
 
 DEPENDENCIES
   facter (~> 2.4.4)
-  hiera (~> 3.0.1)
+  hiera (~> 3.0.5)
   librarian-puppet (~> 2.2.1)
-  metadata-json-lint (~> 0.0.6)
-  puppet (~> 4.2.1)
+  metadata-json-lint (~> 0.0.11)
+  puppet (~> 4.3.0)
   puppet-lint (~> 1.1.0)
   puppet-syntax (~> 2.0.0)
-  puppetlabs_spec_helper (~> 0.10.3)
+  puppetlabs_spec_helper (~> 1.0.1)
   rake (~> 10.4.2)
 
 BUNDLED WITH
