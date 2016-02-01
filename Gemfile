@@ -5,8 +5,6 @@ gem 'librarian-puppet', '~> 2.2.1'
 group :development do
   gem 'rake', '~> 10.5.0'
   gem 'puppet', '~> 4.3.2'
-  gem 'facter', '~> 2.4.5'
-  gem 'hiera', '~> 3.0.6'
 
   gem 'puppetlabs_spec_helper', '~> 1.0.1'
 

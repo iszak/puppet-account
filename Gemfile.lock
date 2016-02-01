@@ -13,7 +13,7 @@ GEM
       tzinfo (~> 1.1)
     builder (3.2.2)
     diff-lcs (1.2.5)
-    facter (2.4.5)
+    facter (2.4.6)
       CFPropertyList (~> 2.2.6)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
@@ -62,7 +62,7 @@ GEM
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
       rspec-mocks (~> 3.4.0)
-    rspec-core (3.4.1)
+    rspec-core (3.4.2)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -70,7 +70,7 @@ GEM
     rspec-mocks (3.4.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
-    rspec-puppet (2.3.1)
+    rspec-puppet (2.3.2)
       rspec
     rspec-support (3.4.1)
     rsync (1.0.9)
@@ -85,8 +85,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  facter (~> 2.4.5)
-  hiera (~> 3.0.6)
   librarian-puppet (~> 2.2.1)
   metadata-json-lint (~> 0.0.11)
   puppet (~> 4.3.2)
