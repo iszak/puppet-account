@@ -2,10 +2,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.2.8)
-    activemodel (4.2.5.1)
-      activesupport (= 4.2.5.1)
+    activemodel (4.2.6)
+      activesupport (= 4.2.6)
       builder (~> 3.1)
-    activesupport (4.2.5.1)
+    activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -22,7 +22,7 @@ GEM
       activesupport (>= 3.0.0)
       faraday (~> 0.8)
       multi_json (~> 1.7)
-    hiera (3.0.6)
+    hiera (3.1.0)
       json_pure
     i18n (0.7.0)
     json (1.8.3)
@@ -42,7 +42,8 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    puppet (4.3.2)
+    puppet (4.4.0)
+      CFPropertyList (~> 2.2.6)
       facter (> 2.0, < 4)
       hiera (>= 2.0, < 4)
       json_pure
@@ -51,18 +52,18 @@ GEM
       rake
     puppet_forge (1.0.5)
       her (~> 0.6.8)
-    puppetlabs_spec_helper (1.0.1)
+    puppetlabs_spec_helper (1.1.1)
       mocha
       puppet-lint
       puppet-syntax
       rake
       rspec-puppet
-    rake (10.5.0)
+    rake (11.1.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
       rspec-mocks (~> 3.4.0)
-    rspec-core (3.4.2)
+    rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -87,11 +88,11 @@ PLATFORMS
 DEPENDENCIES
   librarian-puppet (~> 2.2.1)
   metadata-json-lint (~> 0.0.11)
-  puppet (~> 4.3.2)
+  puppet (~> 4.4.0)
   puppet-lint (~> 1.1.0)
   puppet-syntax (~> 2.1.0)
-  puppetlabs_spec_helper (~> 1.0.1)
-  rake (~> 10.5.0)
+  puppetlabs_spec_helper (~> 1.1.1)
+  rake (~> 11.1.1)
 
 BUNDLED WITH
    1.10.6
