@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 
 group :development do
-  gem 'rake', '~> 11.1.1'
-  gem 'puppet', '~> 4.4.0'
+  gem 'rake', '~> 11.1.2'
+  gem 'puppet', '~> 4.4.1'
 
   gem 'librarian-puppet', '~> 2.2.1'
   gem 'puppetlabs_spec_helper', '~> 1.1.1'
